@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Naomi Indonesian School — Demo</title>
+  <meta name="description" content="Naomi Indonesian School - Demo website: admissions, programs, contact. HSK, TOEFL, Math, Chinese, online & offline." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #1e40af;
+      --secondary: #06b6d4; 
+      --bg: #f9fafb;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #6b7280;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 32px; }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      animation: slideDown 0.8s ease;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 22px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    nav a:hover { color: var(--primary); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 28px;
+      margin-top: 24px;
+      animation: fadeIn 1.2s ease;
+    }
+
+    .hero-text h1 {
+      font-size: 36px;
+      color: var(--primary);
+      animation: slideIn 1s ease;
+    }
+
+    .hero-text p {
+      margin-top: 10px;
+      color: var(--muted);
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: var(--secondary);
+      color: var(--text);
+      font-weight: 700;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .cta:hover {
+      background: #38bdf8;
+      transform: translateY(-2px);
+    }
+
+    .hero img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    section { margin-top: 50px; }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 24px;
+      color: var(--primary);
+      animation: slideIn 1s ease;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+
+    .card:hover { transform: translateY(-5px); }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    .facilities {
+      background: #fff8e1;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .facilities ul {
+      list-style: disc;
+      margin-left: 20px;
+      color: var(--muted);
+    }
+
+    .testimonial {
+      background: linear-gradient(135deg, #dbeafe, #fef9c3);
+      padding: 40px;
+      border-radius: 16px;
+      text-align: center;
+      margin-top: 40px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .testimonial p {
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .testimonial strong { color: var(--primary); }
+
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      padding: 28px 0;
+      color: #e6eef8;
+      background: linear-gradient(90deg,#0f172a,#083344);
+      border-top: 3px solid var(--secondary);
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      margin-top: 8px;
+      font-family: inherit;
+    }
+
+    .small { font-size: 14px; color: var(--muted); }
+
+    .socials {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .socials a {
+      color: #e6eef8;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .socials a:hover { color: var(--secondary); }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: none; }
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero img { margin-top: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">NIS</div>
+        <div>
+          <div style="font-weight:800;font-size:18px">Naomi Indonesian School</div>
+          <div class="small">Empowering bright minds for a brighter future — Online & Offline</div>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#facilities">Facilities</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-text">
+          <h1>Welcome to Naomi Indonesian School</h1>
+          <p>We nurture students to achieve academic excellence, personal growth, and community values in a supportive and creative learning environment. Classes available both online and on-campus.</p>
+          <a class="cta" href="#programs">Explore Our Programs</a>
+        </div>
+        <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=900&q=60" alt="Classroom learning" />
+      </section>
+
+      <section id="about">
+        <h2>About Us</h2>
+        <div class="card">
+          <p>Naomi Indonesian School (NIS) combines international educational standards with Indonesian values. Our passionate educators focus on holistic development — fostering curiosity, creativity, and character in every student. We offer both in-person and virtual learning to fit family needs.</p>
+        </div>
+      </section>
+
+      <section id="programs">
+        <h2>Our Programs</h2>
+        <div class="grid-3">
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=60" alt="STEM & Innovation" />
+            <h3>STEM & Innovation</h3>
+            <p class="small">Hands-on projects, coding clubs, and maker-space activities that spark innovation.</p>
+          </div>
+
+          <div class="card">
+            <img src="https://etudestech.com/wp-content/uploads/2022/12/entreprise-informatique-scaled.jpeg" alt="Language & Math" />
+            <h3>Language & Math</h3>
+            <p class="small">Comprehensive language and mathematics tracks including HSK preparation, HSK exams, TOEFL preparation, Chinese language classes, and mathematics tutoring for all levels. Available online and on-campus.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="facilities">
+        <h2>Campus & Facilities</h2>
+        <div class="facilities">
+          <p>Our campus offers modern classrooms, digital learning labs, and creative spaces that inspire collaboration. We also provide a robust online learning platform for remote students.</p>
+          <ul>
+            <li>Science & Computer Laboratories</li>
+            <li>Library and Reading Lounge</li>
+            <li>Virtual Classrooms & Online Learning Platform</li>
+            <li>Art & Music Studios (selected on-campus programs)</li>
+            <li>Cafeteria and Student Garden</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="testimonials">
+        <h2>What Parents Say</h2>
+        <div class="testimonial">
+          <p>"My child loves going to school every day! Naomi Indonesian School has helped her grow in confidence and academic skills, especially in language and math."</p>
+          <strong>— Mrs. Sari, Parent of Grade 4 Student</strong>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="card" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+          <form id="contactForm" onsubmit="submitForm(event)">
+            <label for="name">Name</label>
+            <input type="text" id="name" required />
+
+            <label for="email">Email</label>
+            <input type="email" id="email" required />
+
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" required></textarea>
+
+            <button type="submit" class="cta" style="border:none;margin-top:10px;">Send Message</button>
+            <p id="formResult" class="small" style="margin-top:8px;"></p>
+          </form>
+
+          <div>
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=60" alt="School building" style="border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.08)" />
+            <div class="small" style="margin-top:10px;">
+              <strong>Address:</strong><br>West Surabaya area, Surabaya, Indonesia
+            </div>
+            <div class="small" style="margin-top:10px;">
+              <strong>Office Hours:</strong><br>Mon–Fri: 08:00 – 16:00
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span id="year"></span> Naomi Indonesian School — Designed by <strong>Yassine Jafa</strong>.<br>
+      <a href="mailto:jafayassine03@gmail.com" class="small">jafayassine03@gmail.com</a>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/yassine-jafa-a607a931a/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/yassinejafa" target="_blank">GitHub</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function submitForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const res = document.getElementById('formResult');
+
+      if (!name || !email || !message) {
+        res.textContent = ' Please fill in all fields.';
+        res.style.color = '#dc2626';
+        return;
+      }
+
+      res.textContent = `Thanks, ${name}! Your message has been recorded. We will contact you at ${email}.`;
+      res.style.color = 'green';
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
